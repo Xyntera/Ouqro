@@ -4,453 +4,256 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ouqro.tech - Multi-Venture Tech Company</title>
-    <!-- Use Google Fonts for Typography -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
-    <!-- Load Tailwind CSS -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    <!-- GSAP Animation Library -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
-    <!-- Three.js for 3D graphics -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/0.155.0/three.min.js"></script>
-    <!-- Lottie for lightweight animations -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/lottie-web/5.12.2/lottie.min.js"></script>
-    <!-- Particles.js for interactive backgrounds -->
-    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
-    <style>
-        /* Custom Tailwind Configuration */
-        :root {
-            --deep-blue: #0A0F2C;
-            --electric-blue: #3B82F6;
-            --neon-purple: #8B5CF6;
-            --off-white: #F9FAFB;
-            --gray-text: #6B7280;
-            --divider: #E5E7EB;
-        }
-
-        /* Extend Tailwind's default theme */
-        .glassmorphism {
-            background: rgba(255, 255, 255, 0.2);
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.3);
-        }
-        
-        /* Glassmorphism for light background */
-        .glassmorphism-light {
-            background: rgba(10, 15, 44, 0.05); /* Very light, transparent deep blue */
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
-            border: 1px solid rgba(10, 15, 44, 0.1);
-        }
-
-        .hero-bg {
-            background: linear-gradient(135deg, var(--off-white) 60%, rgba(59, 130, 246, 0.05) 100%);
-        }
-
-        .bg-deep-blue { background-color: var(--deep-blue); }
-        .text-deep-blue { color: var(--deep-blue); }
-        .text-electric-blue { color: var(--electric-blue); }
-        .text-neon-purple { color: var(--neon-purple); }
-
-        .btn-glow-shadow {
-            box-shadow: 0 0 10px rgba(59, 130, 246, 0.4), 0 0 20px rgba(139, 92, 246, 0.3);
-            transition: all 0.3s ease-in-out;
-        }
-
-        .btn-glow-shadow:hover {
-            box-shadow: 0 0 15px rgba(59, 130, 246, 0.6), 0 0 30px rgba(139, 92, 246, 0.5);
-        }
-        
-        /* Custom underline animation for nav links */
-        .nav-link {
-            position: relative;
-        }
-
-        .nav-link::after {
-            content: '';
-            position: absolute;
-            bottom: -5px;
-            left: 0;
-            width: 0;
-            height: 2px;
-            background-color: var(--electric-blue);
-            transition: width 0.3s ease-in-out;
-        }
-
-        .nav-link:hover::after {
-            width: 100%;
-        }
-
-        /* For the hover lift effect on venture cards */
-        .venture-card {
-            transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
-            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
-        }
-
-        .venture-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 15px 25px -5px rgba(59, 130, 246, 0.2), 0 10px 10px -5px rgba(139, 92, 246, 0.1);
-        }
-        
-        /* For the glow on input fields */
-        .input-glow {
-            transition: box-shadow 0.3s ease-in-out;
-        }
-        
-        .input-glow:focus {
-            outline: none;
-            box-shadow: 0 0 5px rgba(59, 130, 246, 0.5);
-        }
-        
-        /* Canvas container for Three.js */
-        #hero-canvas, #about-canvas {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: 0;
-        }
-        
-        /* Lottie animation containers */
-        .lottie-container {
-            width: 100%;
-            height: 100%;
-            overflow: hidden;
-        }
-        
-        /* Particles container */
-        #particles-js {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            top: 0;
-            left: 0;
-            z-index: 0;
-            opacity: 0.6;
-        }
-        
-        /* For smooth scroll behavior */
-        html {
-            scroll-behavior: smooth;
-        }
-        
-        /* Magnetic button effect */
-        .magnetic-button {
-            cursor: pointer;
-            position: relative;
-            transition: transform 0.2s ease;
-        }
-        
-        /* For staggered animation of cards */
-        .stagger-item {
-            opacity: 0;
-            transform: translateY(20px);
-        }
-        
-        /* Full page loader */
-        .page-loader {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: var(--deep-blue);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            z-index: 9999;
-            transition: opacity 0.5s ease-in-out;
-        }
-        
-        .loader-logo {
-            width: 100px;
-            height: 100px;
-        }
-        
-        /* Gradient text animation */
-        .gradient-text {
-            background: linear-gradient(90deg, var(--electric-blue), var(--neon-purple), var(--electric-blue));
-            background-size: 200% auto;
-            color: transparent;
-            -webkit-background-clip: text;
-            background-clip: text;
-            animation: gradientText 3s linear infinite;
-        }
-        
-        @keyframes gradientText {
-            0% { background-position: 0% center; }
-            100% { background-position: 200% center; }
-        }
-        
-        /* Glitch effect for tech text */
-        .glitch-text {
-            position: relative;
-            animation: glitch 3s infinite;
-        }
-        
-        @keyframes glitch {
-            0% { text-shadow: 0.05em 0 0 rgba(255, 0, 0, 0.75), -0.05em -0.025em 0 rgba(0, 255, 0, 0.75), 0.025em 0.05em 0 rgba(0, 0, 255, 0.75); }
-            14% { text-shadow: 0.05em 0 0 rgba(255, 0, 0, 0.75), -0.05em -0.025em 0 rgba(0, 255, 0, 0.75), 0.025em 0.05em 0 rgba(0, 0, 255, 0.75); }
-            15% { text-shadow: -0.05em -0.025em 0 rgba(255, 0, 0, 0.75), 0.025em 0.025em 0 rgba(0, 255, 0, 0.75), -0.05em -0.05em 0 rgba(0, 0, 255, 0.75); }
-            49% { text-shadow: -0.05em -0.025em 0 rgba(255, 0, 0, 0.75), 0.025em 0.025em 0 rgba(0, 255, 0, 0.75), -0.05em -0.05em 0 rgba(0, 0, 255, 0.75); }
-            50% { text-shadow: 0.025em 0.05em 0 rgba(255, 0, 0, 0.75), 0.05em 0 0 rgba(0, 255, 0, 0.75), 0 -0.05em 0 rgba(0, 0, 255, 0.75); }
-            99% { text-shadow: 0.025em 0.05em 0 rgba(255, 0, 0, 0.75), 0.05em 0 0 rgba(0, 255, 0, 0.75), 0 -0.05em 0 rgba(0, 0, 255, 0.75); }
-            100% { text-shadow: -0.025em 0 0 rgba(255, 0, 0, 0.75), -0.025em -0.025em 0 rgba(0, 255, 0, 0.75), -0.025em -0.05em 0 rgba(0, 0, 255, 0.75); }
-        }
-    </style>
+    <meta name="description" content="Ouqro is a multi-venture tech company building sustainable, forward-thinking ventures across AI, Web3, and digital infrastructure.">
+    <meta name="keywords" content="tech company, AI, Web3, digital infrastructure, ventures, technology solutions">
+    <meta name="author" content="Ouqro">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🚀</text></svg>">
+    
+    <!-- Local Styles -->
+    <link rel="stylesheet" href="styles.css">
 </head>
-<body class="bg-off-white text-gray-800 font-inter antialiased overflow-x-hidden">
+<body>
     <!-- Page Loader -->
     <div class="page-loader">
-        <div class="loader-logo" id="loader-animation"></div>
+        <div class="loader-content">
+            <div class="loader-spinner"></div>
+            <p>Loading Ouqro...</p>
+        </div>
     </div>
 
-    <!-- 1. Sticky Glassmorphism Navbar -->
-    <nav class="sticky top-0 z-50 w-full px-6 py-4 glassmorphism border-b border-gray-200">
-        <div class="container mx-auto flex justify-between items-center">
-            <!-- Ouqro Logo -->
-            <a href="#" class="flex items-center space-x-2 text-2xl font-bold font-space-grotesk tracking-tight text-deep-blue">
-                <div id="logo-animation" class="w-8 h-8"></div>
-                <span class="logo-text">Ouqro.tech</span>
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-container">
+            <!-- Logo -->
+            <a href="#" class="logo">
+                <div class="w-8 h-8">🚀</div>
+                <span>Ouqro.tech</span>
             </a>
-            <!-- Menu Items -->
-            <div class="hidden md:flex items-center space-x-8">
-                <a href="#hero" class="text-deep-blue font-semibold nav-link nav-item">Home</a>
-                <a href="#ventures" class="text-deep-blue font-semibold nav-link nav-item">Ventures</a>
-                <a href="#ideator" class="text-deep-blue font-semibold nav-link nav-item">Ideator</a>
-                <a href="#about" class="text-deep-blue font-semibold nav-link nav-item">About</a>
-                <a href="#contact" class="text-deep-blue font-semibold nav-link nav-item">Contact</a>
+            
+            <!-- Desktop Navigation -->
+            <div class="nav-links">
+                <a href="#hero">Home</a>
+                <a href="#ventures">Ventures</a>
+                <a href="#ideator">Ideator</a>
+                <a href="#about">About</a>
+                <a href="#contact">Contact</a>
             </div>
+            
             <!-- Mobile Menu Button -->
-            <div class="md:hidden">
-                <button id="mobile-menu-button" class="text-deep-blue">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
-                    </svg>
-                </button>
-            </div>
+            <button class="mobile-menu-button" id="mobile-menu-button">
+                ☰
+            </button>
         </div>
+        
         <!-- Mobile Menu -->
-        <div id="mobile-menu" class="hidden md:hidden mt-4 pb-4">
-            <div class="flex flex-col space-y-4">
-                <a href="#hero" class="text-deep-blue font-semibold">Home</a>
-                <a href="#ventures" class="text-deep-blue font-semibold">Ventures</a>
-                <a href="#ideator" class="text-deep-blue font-semibold">Ideator</a>
-                <a href="#about" class="text-deep-blue font-semibold">About</a>
-                <a href="#contact" class="text-deep-blue font-semibold">Contact</a>
-            </div>
+        <div class="mobile-menu hidden" id="mobile-menu">
+            <a href="#hero">Home</a>
+            <a href="#ventures">Ventures</a>
+            <a href="#ideator">Ideator</a>
+            <a href="#about">About</a>
+            <a href="#contact">Contact</a>
         </div>
     </nav>
 
     <main>
-        <!-- 2. Hero Section with Three.js Background -->
-        <header id="hero" class="relative hero-bg py-24 md:py-32 px-6 overflow-hidden">
-            <div id="hero-canvas"></div>
-            <div class="container mx-auto flex flex-col items-center text-center relative z-10">
-                <h1 class="text-4xl md:text-6xl lg:text-7xl font-space-grotesk font-bold uppercase tracking-wide text-deep-blue mb-4 hero-title">
-                    <span class="gradient-text">Ouqro</span>
-                </h1>
-                <h2 class="text-xl md:text-3xl font-semibold text-deep-blue mb-4 hero-subtitle">
-                    Multi-Venture <span class="glitch-text">Tech</span> Company
-                </h2>
-                <p class="max-w-3xl text-lg md:text-xl text-gray-600 mb-8 hero-text">
-                    Building and scaling ventures across AI, Web3, and digital infrastructure.
-                </p>
-                <div class="flex flex-col md:flex-row space-y-4 md:space-y-0 md:space-x-4">
-                    <button class="magnetic-button px-8 py-3 rounded-2xl bg-deep-blue text-white font-semibold shadow-lg hover:bg-opacity-90 transition-all duration-300 btn-glow-shadow hero-btn-primary">
-                        Explore Ventures
-                    </button>
-                    <button class="magnetic-button px-8 py-3 rounded-2xl border-2 border-deep-blue text-deep-blue font-semibold hover:bg-deep-blue hover:text-white transition-all duration-300 hover:btn-glow-shadow hero-btn-secondary">
-                        Work With Us
-                    </button>
-                </div>
-            </div>
-        </header>
-
-        <!-- 3. Ventures Section with Staggered Animation -->
-        <section id="ventures" class="py-24 md:py-32 px-6 relative">
-            <div id="particles-js" class="ventures-particles"></div>
-            <div class="container mx-auto relative z-10">
-                <h2 class="text-3xl md:text-5xl font-space-grotesk font-bold uppercase text-center text-deep-blue mb-12 section-title">
-                    Our Ventures
-                </h2>
-                <!-- Ventures Grid -->
-                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 ventures-grid">
-                    <!-- Venture Card 1: AI -->
-                    <div class="p-6 rounded-2xl glassmorphism-light venture-card stagger-item">
-                        <div class="text-deep-blue mb-4 venture-icon">
-                            <div id="ai-animation" class="w-24 h-24 mx-auto"></div>
-                        </div>
-                        <h3 class="text-xl font-semibold text-deep-blue">AI Solutions</h3>
-                        <p class="mt-2 text-gray-600">Developing intelligent systems for enterprise automation and creative workflows.</p>
-                    </div>
-
-                    <!-- Venture Card 2: Web3 -->
-                    <div class="p-6 rounded-2xl glassmorphism-light venture-card stagger-item">
-                        <div class="text-deep-blue mb-4 venture-icon">
-                            <div id="web3-animation" class="w-24 h-24 mx-auto"></div>
-                        </div>
-                        <h3 class="text-xl font-semibold text-deep-blue">Web3 & Blockchain</h3>
-                        <p class="mt-2 text-gray-600">Forging decentralized applications and infrastructure for a new digital era.</p>
-                    </div>
-
-                    <!-- Venture Card 3: Digital Infrastructure -->
-                    <div class="p-6 rounded-2xl glassmorphism-light venture-card stagger-item">
-                        <div class="text-deep-blue mb-4 venture-icon">
-                            <div id="infra-animation" class="w-24 h-24 mx-auto"></div>
-                        </div>
-                        <h3 class="text-xl font-semibold text-deep-blue">Digital Infrastructure</h3>
-                        <p class="mt-2 text-gray-600">Building scalable cloud platforms and robust data networks.</p>
+        <!-- Hero Section -->
+        <section id="hero" class="hero">
+            <div class="container">
+                <div class="hero-content">
+                    <h1 class="section-title">
+                        <span class="text-electric-blue">Ouqro</span>
+                    </h1>
+                    <h2 class="section-text">
+                        Multi-Venture <span class="text-neon-purple">Tech</span> Company
+                    </h2>
+                    <p class="section-text">
+                        Building and scaling ventures across AI, Web3, and digital infrastructure.
+                    </p>
+                    <div class="hero-buttons">
+                        <a href="#ventures" class="btn btn-primary magnetic-button">
+                            Explore Ventures
+                        </a>
+                        <a href="#contact" class="btn btn-secondary magnetic-button">
+                            Work With Us
+                        </a>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- 4. AI Venture Ideator with Animation -->
-        <section id="ideator" class="py-24 md:py-32 px-6 bg-off-white relative">
-            <div class="container mx-auto max-w-3xl text-center">
-                <h2 class="text-3xl md:text-5xl font-space-grotesk font-bold uppercase text-deep-blue mb-6 section-title">
-                     AI Venture Ideator
+        <!-- Ventures Section -->
+        <section id="ventures" class="section bg-off-white">
+            <div class="container">
+                <h2 class="text-3xl text-center mb-8 section-title">
+                    Our Ventures
+                </h2>
+                <div class="grid grid-cols-3 gap-8">
+                    <!-- AI Solutions Card -->
+                    <div class="card venture-card stagger-item">
+                        <div class="text-center mb-4">
+                            <div class="text-5xl mb-4">🤖</div>
+                        </div>
+                        <h3 class="text-xl font-semibold text-deep-blue mb-4">AI Solutions</h3>
+                        <p class="text-gray-600">Developing intelligent systems for enterprise automation and creative workflows.</p>
+                    </div>
+
+                    <!-- Web3 & Blockchain Card -->
+                    <div class="card venture-card stagger-item">
+                        <div class="text-center mb-4">
+                            <div class="text-5xl mb-4">⛓️</div>
+                        </div>
+                        <h3 class="text-xl font-semibold text-deep-blue mb-4">Web3 & Blockchain</h3>
+                        <p class="text-gray-600">Forging decentralized applications and infrastructure for a new digital era.</p>
+                    </div>
+
+                    <!-- Digital Infrastructure Card -->
+                    <div class="card venture-card stagger-item">
+                        <div class="text-center mb-4">
+                            <div class="text-5xl mb-4">🏗️</div>
+                        </div>
+                        <h3 class="text-xl font-semibold text-deep-blue mb-4">Digital Infrastructure</h3>
+                        <p class="text-gray-600">Building scalable cloud platforms and robust data networks.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- AI Ideator Section -->
+        <section id="ideator" class="section bg-white">
+            <div class="container text-center">
+                <h2 class="text-3xl mb-6 section-title">
+                    AI Venture Ideator
                 </h2>
                 <p class="text-lg text-gray-600 mb-8 section-text">
                     Describe your business idea below, and let our AI generate a high-level venture blueprint.
                 </p>
-                <div class="space-y-6 text-left">
-                    <textarea id="ideaInput" rows="4" placeholder="e.g., An app that uses AI to create personalized study plans for students."
-                              class="w-full rounded-2xl border-2 border-gray-300 bg-transparent text-gray-800 placeholder-gray-500 shadow-sm focus:ring-electric-blue focus:border-electric-blue input-glow p-4 transition-colors"></textarea>
+                <div class="max-w-2xl mx-auto">
+                    <div class="form-field">
+                        <textarea id="idea-input" rows="4" 
+                                  placeholder="e.g., An app that uses AI to create personalized study plans for students."
+                                  class="w-full p-4 border border-gray-300 rounded-lg"></textarea>
+                    </div>
+                    <button id="generate-btn" class="btn btn-primary magnetic-button">
+                        Generate Blueprint
+                    </button>
+                    <div id="ideator-output" class="mt-8 text-left">
+                        <h3 class="text-xl font-semibold mb-4">Venture Blueprint</h3>
+                        <div class="bg-gray-100 p-6 rounded-lg">
+                            <p class="text-gray-600">Your venture blueprint will appear here.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- About Section -->
+        <section id="about" class="section bg-off-white">
+            <div class="container">
+                <div class="grid grid-cols-1 gap-12 items-center">
                     <div class="text-center">
-                        <button id="generateBtn" class="magnetic-button px-8 py-3 rounded-2xl bg-electric-blue text-deep-blue font-semibold hover:bg-opacity-90 transition-all duration-300 btn-glow-shadow">
-                            Generate Blueprint 
-                        </button>
+                        <h2 class="text-3xl mb-6 section-title">
+                            About Ouqro
+                        </h2>
+                        <p class="text-lg text-gray-600 mb-8 section-text max-w-4xl mx-auto">
+                            At Ouqro, we're more than just a company; we're an ecosystem of innovation. We
+                            believe in creating sustainable, forward-thinking ventures that shape the
+                            future of technology. Our mission is to diversify risk and maximize
+                            growth by fostering a portfolio of high-impact companies.
+                        </p>
                     </div>
-                </div>
-                <!-- Output Display Area -->
-                <div id="outputContainer" class="mt-12 hidden">
-                    <h3 class="text-2xl font-space-grotesk font-semibold text-left mb-4 text-deep-blue">Venture Blueprint</h3>
-                    <div id="outputArea" class="text-left p-6 rounded-2xl glassmorphism-light border border-gray-200 min-h-[200px] flex items-center justify-center">
-                        <p class="text-gray-600">Your venture blueprint will appear here.</p>
-                    </div>
-                </div>
-            </div>
-            <!-- AI Brain Animation -->
-            <div id="ai-brain-container" class="absolute right-0 top-0 w-32 h-32 md:w-64 md:h-64 opacity-10"></div>
-        </section>
-
-        <!-- 5. About Section with 3D Globe -->
-        <section id="about" class="py-24 md:py-32 px-6 bg-off-white relative">
-            <div id="about-canvas" class="opacity-10"></div>
-            <div class="container mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 items-center relative z-10">
-                <!-- Left: Mission & Values Text -->
-                <div class="about-text">
-                    <h2 class="text-3xl md:text-5xl font-space-grotesk font-bold uppercase text-deep-blue mb-6 section-title">
-                        About Ouqro
-                    </h2>
-                    <p class="text-lg text-gray-600 mb-8 section-text">
-                        At Ouqro, we're more than just a company; we're an ecosystem of innovation. We
-                        believe in creating sustainable, forward-thinking ventures that shape the
-                        future of technology. Our mission is to diversify risk and maximize
-                        growth by fostering a portfolio of high-impact companies.
-                    </p>
-                    <div class="grid grid-cols-2 gap-4 values-grid">
+                    
+                    <div class="grid grid-cols-2 gap-6">
                         <!-- Value Card 1 -->
-                        <div class="p-4 rounded-xl border border-gray-300 stagger-item">
-                            <h4 class="font-semibold text-deep-blue">Innovation</h4>
-                            <p class="text-sm text-gray-600">Embracing the new and challenging the status quo.</p>
+                        <div class="card stagger-item">
+                            <h4 class="font-semibold text-deep-blue mb-2">Innovation</h4>
+                            <p class="text-gray-600">Embracing the new and challenging the status quo.</p>
                         </div>
+                        
                         <!-- Value Card 2 -->
-                        <div class="p-4 rounded-xl border border-gray-300 stagger-item">
-                            <h4 class="font-semibold text-deep-blue">Diversification</h4>
-                            <p class="text-sm text-gray-600">Building a resilient portfolio across multiple sectors.</p>
+                        <div class="card stagger-item">
+                            <h4 class="font-semibold text-deep-blue mb-2">Diversification</h4>
+                            <p class="text-gray-600">Building a resilient portfolio across multiple sectors.</p>
                         </div>
+                        
                         <!-- Value Card 3 -->
-                        <div class="p-4 rounded-xl border border-gray-300 stagger-item">
-                            <h4 class="font-semibold text-deep-blue">Scalability</h4>
-                            <p class="text-sm text-gray-600">Creating solutions designed for exponential growth.</p>
+                        <div class="card stagger-item">
+                            <h4 class="font-semibold text-deep-blue mb-2">Scalability</h4>
+                            <p class="text-gray-600">Creating solutions designed for exponential growth.</p>
                         </div>
+                        
                         <!-- Value Card 4 -->
-                        <div class="p-4 rounded-xl border border-gray-300 stagger-item">
-                            <h4 class="font-semibold text-deep-blue">Reliability</h4>
-                            <p class="text-sm text-gray-600">Delivering consistent performance and trust.</p>
+                        <div class="card stagger-item">
+                            <h4 class="font-semibold text-deep-blue mb-2">Reliability</h4>
+                            <p class="text-gray-600">Delivering consistent performance and trust.</p>
                         </div>
                     </div>
-                </div>
-                <!-- Right: 3D Tech Visualization -->
-                <div id="tech-visual" class="flex justify-center items-center rounded-2xl overflow-hidden h-[400px]">
-                    <!-- 3D visualization will be injected here by Three.js -->
                 </div>
             </div>
         </section>
 
-        <!-- 6. Contact Section with Interactive Form -->
-        <section id="contact" class="py-24 md:py-32 px-6">
-            <div class="container mx-auto max-w-2xl text-center">
-                <h2 class="text-3xl md:text-5xl font-space-grotesk font-bold uppercase text-deep-blue mb-6 section-title">
+        <!-- Contact Section -->
+        <section id="contact" class="section bg-white">
+            <div class="container text-center">
+                <h2 class="text-3xl mb-6 section-title">
                     Contact Us
                 </h2>
                 <p class="text-lg text-gray-600 mb-8 section-text">
                     Have a question or a project in mind? Reach out to us below.
                 </p>
-                <!-- Interactive form with animations -->
-                <form action="#" method="POST" class="space-y-6 text-left contact-form">
-                    <div class="form-field">
-                        <label for="name" class="block text-sm font-medium text-gray-700">Name</label>
-                        <input type="text" id="name" name="name" required
-                               class="mt-1 block w-full rounded-2xl border-gray-300 shadow-sm focus:ring-deep-blue focus:border-deep-blue input-glow">
-                    </div>
-                    <div class="form-field">
-                        <label for="email" class="block text-sm font-medium text-gray-700">Email</label>
-                        <input type="email" id="email" name="email" required
-                               class="mt-1 block w-full rounded-2xl border-gray-300 shadow-sm focus:ring-deep-blue focus:border-deep-blue input-glow">
-                    </div>
-                    <div class="form-field">
-                        <label for="message" class="block text-sm font-medium text-gray-700">Message</label>
-                        <textarea id="message" name="message" rows="4" required
-                                  class="mt-1 block w-full rounded-2xl border-gray-300 shadow-sm focus:ring-deep-blue focus:border-deep-blue input-glow"></textarea>
-                    </div>
-                    <div class="text-center">
-                        <button type="submit" class="magnetic-button px-8 py-3 rounded-2xl bg-deep-blue text-white font-semibold shadow-lg hover:bg-opacity-90 transition-all duration-300 btn-glow-shadow">
+                
+                <div class="max-w-2xl mx-auto">
+                    <form class="contact-form">
+                        <div class="form-field">
+                            <label for="name">Name</label>
+                            <input type="text" id="name" name="name" required>
+                        </div>
+                        
+                        <div class="form-field">
+                            <label for="email">Email</label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+                        
+                        <div class="form-field">
+                            <label for="message">Message</label>
+                            <textarea id="message" name="message" rows="4" required></textarea>
+                        </div>
+                        
+                        <button type="submit" class="btn btn-primary magnetic-button">
                             Send Message
                         </button>
-                    </div>
-                </form>
+                    </form>
+                </div>
             </div>
         </section>
     </main>
 
-    <!-- 7. Footer with Animation -->
-    <footer class="bg-deep-blue text-white py-12 px-6">
-        <div class="container mx-auto">
-            <div class="flex flex-col md:flex-row justify-between items-center mb-6">
-                <!-- Left: Logo -->
-                <div class="flex items-center space-x-2 text-2xl font-bold font-space-grotesk tracking-tight text-white mb-4 md:mb-0">
-                    <div id="footer-logo-animation" class="w-8 h-8"></div>
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <div class="w-8 h-8">🚀</div>
                     <span>Ouqro.tech</span>
                 </div>
-                <!-- Right: Quick Links -->
-                <div class="flex flex-wrap justify-center space-x-6 md:space-x-8 text-sm">
-                    <a href="#hero" class="hover:text-electric-blue transition-colors">Home</a>
-                    <a href="#ventures" class="hover:text-electric-blue transition-colors">Ventures</a>
-                    <a href="#ideator" class="hover:text-electric-blue transition-colors">Ideator</a>
-                    <a href="#about" class="hover:text-electric-blue transition-colors">About</a>
-                    <a href="#contact" class="hover:text-electric-blue transition-colors">Contact</a>
+                
+                <div class="footer-links">
+                    <a href="#hero">Home</a>
+                    <a href="#ventures">Ventures</a>
+                    <a href="#ideator">Ideator</a>
+                    <a href="#about">About</a>
+                    <a href="#contact">Contact</a>
                 </div>
             </div>
-            <!-- Bottom: Copyright Text -->
-            <div class="text-center text-xs text-gray-400 border-t border-gray-700 pt-6">
+            
+            <div class="footer-copyright">
                 © 2025 Ouqro. All Rights Reserved.
             </div>
         </div>
     </footer>
 
-    <script src="scripts.js"></script>
+    <!-- Scripts -->
+    <script src="app.js"></script>
 </body>
-  
-  
-  
 </html>
-
-
