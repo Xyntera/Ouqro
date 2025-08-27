@@ -1,0 +1,44 @@
+{
+    "name": "Ouqro - Innovation Through Technology",
+    "short_name": "Ouqro",
+    "description": "Multi-venture technology company building the future through AI, Web3, and digital infrastructure innovations",
+    "start_url": "/",
+    "display": "standalone",
+    "background_color": "#ffffff",
+    "theme_color": "#0066cc",
+    "orientation": "portrait-primary",
+    "scope": "/",
+    "lang": "en-US",
+    "dir": "ltr",
+    "categories": ["technology", "business", "innovation"],
+    "icons": [
+        {
+            "src": "/assets/favicon/icon-192x192.png",
+            "sizes": "192x192",
+            "type": "image/png",
+            "purpose": "any maskable"
+        },
+        {
+            "src": "/assets/favicon/icon-512x512.png",
+            "sizes": "512x512",
+            "type": "image/png",
+            "purpose": "any maskable"
+        }
+    ],
+    "shortcuts": [
+        {
+            "name": "Services",
+            "short_name": "Services",
+            "description": "View our technology services",
+            "url": "/#services"
+        },
+        {
+            "name": "Contact",
+            "short_name": "Contact",
+            "description": "Get in touch with us",
+            "url": "/#contact"
+        }
+    ],
+    "related_applications": [],
+    "prefer_related_applications": false
+}

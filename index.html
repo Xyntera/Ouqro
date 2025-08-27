@@ -3,454 +3,844 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ouqro.tech - Multi-Venture Tech Company</title>
-    <!-- Use Google Fonts for Typography -->
+    <title>Ouqro - Innovation Through Technology | Multi-Venture Tech Company</title>
+    
+    <!-- Meta Tags for SEO -->
+    <meta name="description" content="Ouqro is a multi-venture technology company building the future through AI, Web3, and digital infrastructure innovations.">
+    <meta name="keywords" content="technology, innovation, AI, Web3, digital infrastructure, startup, ventures">
+    <meta name="author" content="Ouqro">
+    <meta name="robots" content="index, follow">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://ouqro.tech/">
+    <meta property="og:title" content="Ouqro - Innovation Through Technology">
+    <meta property="og:description" content="Multi-venture technology company building the future through AI, Web3, and digital infrastructure innovations.">
+    <meta property="og:image" content="https://ouqro.tech/assets/images/og-image.jpg">
+    
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://ouqro.tech/">
+    <meta property="twitter:title" content="Ouqro - Innovation Through Technology">
+    <meta property="twitter:description" content="Multi-venture technology company building the future through AI, Web3, and digital infrastructure innovations.">
+    <meta property="twitter:image" content="https://ouqro.tech/assets/images/og-image.jpg">
+    
+    <!-- Favicon -->
+    <link rel="apple-touch-icon" sizes="180x180" href="/assets/favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon/favicon-16x16.png">
+    <link rel="manifest" href="/assets/favicon/site.webmanifest">
+    
+    <!-- Theme Color -->
+    <meta name="theme-color" content="#0066cc">
+    
+    <!-- Preconnect to external domains -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
-    <!-- Load Tailwind CSS -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    <!-- GSAP Animation Library -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
-    <!-- Three.js for 3D graphics -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/0.155.0/three.min.js"></script>
-    <!-- Lottie for lightweight animations -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/lottie-web/5.12.2/lottie.min.js"></script>
-    <!-- Particles.js for interactive backgrounds -->
-    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
-    <style>
-        /* Custom Tailwind Configuration */
-        :root {
-            --deep-blue: #0A0F2C;
-            --electric-blue: #3B82F6;
-            --neon-purple: #8B5CF6;
-            --off-white: #F9FAFB;
-            --gray-text: #6B7280;
-            --divider: #E5E7EB;
+    
+    <!-- Critical Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Critical CSS -->
+    <link rel="stylesheet" href="/assets/css/styles.css">
+    
+    <!-- Preload critical resources -->
+    <link rel="preload" href="/assets/js/main.js" as="script">
+    <link rel="preload" href="/assets/js/aos.js" as="script">
+    <link rel="preload" href="/assets/js/slider.js" as="script">
+    
+    <!-- Schema.org structured data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Organization",
+        "name": "Ouqro",
+        "description": "Multi-venture technology company building the future through AI, Web3, and digital infrastructure innovations",
+        "url": "https://ouqro.tech",
+        "logo": "https://ouqro.tech/assets/images/logo.svg",
+        "sameAs": [
+            "https://twitter.com/ouqro",
+            "https://linkedin.com/company/ouqro"
+        ],
+        "contactPoint": {
+            "@type": "ContactPoint",
+            "contactType": "business",
+            "email": "hello@ouqro.tech"
         }
-
-        /* Extend Tailwind's default theme */
-        .glassmorphism {
-            background: rgba(255, 255, 255, 0.2);
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.3);
-        }
-        
-        /* Glassmorphism for light background */
-        .glassmorphism-light {
-            background: rgba(10, 15, 44, 0.05); /* Very light, transparent deep blue */
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
-            border: 1px solid rgba(10, 15, 44, 0.1);
-        }
-
-        .hero-bg {
-            background: linear-gradient(135deg, var(--off-white) 60%, rgba(59, 130, 246, 0.05) 100%);
-        }
-
-        .bg-deep-blue { background-color: var(--deep-blue); }
-        .text-deep-blue { color: var(--deep-blue); }
-        .text-electric-blue { color: var(--electric-blue); }
-        .text-neon-purple { color: var(--neon-purple); }
-
-        .btn-glow-shadow {
-            box-shadow: 0 0 10px rgba(59, 130, 246, 0.4), 0 0 20px rgba(139, 92, 246, 0.3);
-            transition: all 0.3s ease-in-out;
-        }
-
-        .btn-glow-shadow:hover {
-            box-shadow: 0 0 15px rgba(59, 130, 246, 0.6), 0 0 30px rgba(139, 92, 246, 0.5);
-        }
-        
-        /* Custom underline animation for nav links */
-        .nav-link {
-            position: relative;
-        }
-
-        .nav-link::after {
-            content: '';
-            position: absolute;
-            bottom: -5px;
-            left: 0;
-            width: 0;
-            height: 2px;
-            background-color: var(--electric-blue);
-            transition: width 0.3s ease-in-out;
-        }
-
-        .nav-link:hover::after {
-            width: 100%;
-        }
-
-        /* For the hover lift effect on venture cards */
-        .venture-card {
-            transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
-            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
-        }
-
-        .venture-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 15px 25px -5px rgba(59, 130, 246, 0.2), 0 10px 10px -5px rgba(139, 92, 246, 0.1);
-        }
-        
-        /* For the glow on input fields */
-        .input-glow {
-            transition: box-shadow 0.3s ease-in-out;
-        }
-        
-        .input-glow:focus {
-            outline: none;
-            box-shadow: 0 0 5px rgba(59, 130, 246, 0.5);
-        }
-        
-        /* Canvas container for Three.js */
-        #hero-canvas, #about-canvas {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: 0;
-        }
-        
-        /* Lottie animation containers */
-        .lottie-container {
-            width: 100%;
-            height: 100%;
-            overflow: hidden;
-        }
-        
-        /* Particles container */
-        #particles-js {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            top: 0;
-            left: 0;
-            z-index: 0;
-            opacity: 0.6;
-        }
-        
-        /* For smooth scroll behavior */
-        html {
-            scroll-behavior: smooth;
-        }
-        
-        /* Magnetic button effect */
-        .magnetic-button {
-            cursor: pointer;
-            position: relative;
-            transition: transform 0.2s ease;
-        }
-        
-        /* For staggered animation of cards */
-        .stagger-item {
-            opacity: 0;
-            transform: translateY(20px);
-        }
-        
-        /* Full page loader */
-        .page-loader {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: var(--deep-blue);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            z-index: 9999;
-            transition: opacity 0.5s ease-in-out;
-        }
-        
-        .loader-logo {
-            width: 100px;
-            height: 100px;
-        }
-        
-        /* Gradient text animation */
-        .gradient-text {
-            background: linear-gradient(90deg, var(--electric-blue), var(--neon-purple), var(--electric-blue));
-            background-size: 200% auto;
-            color: transparent;
-            -webkit-background-clip: text;
-            background-clip: text;
-            animation: gradientText 3s linear infinite;
-        }
-        
-        @keyframes gradientText {
-            0% { background-position: 0% center; }
-            100% { background-position: 200% center; }
-        }
-        
-        /* Glitch effect for tech text */
-        .glitch-text {
-            position: relative;
-            animation: glitch 3s infinite;
-        }
-        
-        @keyframes glitch {
-            0% { text-shadow: 0.05em 0 0 rgba(255, 0, 0, 0.75), -0.05em -0.025em 0 rgba(0, 255, 0, 0.75), 0.025em 0.05em 0 rgba(0, 0, 255, 0.75); }
-            14% { text-shadow: 0.05em 0 0 rgba(255, 0, 0, 0.75), -0.05em -0.025em 0 rgba(0, 255, 0, 0.75), 0.025em 0.05em 0 rgba(0, 0, 255, 0.75); }
-            15% { text-shadow: -0.05em -0.025em 0 rgba(255, 0, 0, 0.75), 0.025em 0.025em 0 rgba(0, 255, 0, 0.75), -0.05em -0.05em 0 rgba(0, 0, 255, 0.75); }
-            49% { text-shadow: -0.05em -0.025em 0 rgba(255, 0, 0, 0.75), 0.025em 0.025em 0 rgba(0, 255, 0, 0.75), -0.05em -0.05em 0 rgba(0, 0, 255, 0.75); }
-            50% { text-shadow: 0.025em 0.05em 0 rgba(255, 0, 0, 0.75), 0.05em 0 0 rgba(0, 255, 0, 0.75), 0 -0.05em 0 rgba(0, 0, 255, 0.75); }
-            99% { text-shadow: 0.025em 0.05em 0 rgba(255, 0, 0, 0.75), 0.05em 0 0 rgba(0, 255, 0, 0.75), 0 -0.05em 0 rgba(0, 0, 255, 0.75); }
-            100% { text-shadow: -0.025em 0 0 rgba(255, 0, 0, 0.75), -0.025em -0.025em 0 rgba(0, 255, 0, 0.75), -0.025em -0.05em 0 rgba(0, 0, 255, 0.75); }
-        }
-    </style>
+    }
+    </script>
 </head>
-<body class="bg-off-white text-gray-800 font-inter antialiased overflow-x-hidden">
-    <!-- Page Loader -->
-    <div class="page-loader">
-        <div class="loader-logo" id="loader-animation"></div>
+
+<body class="font-primary">
+    <!-- Loading Screen -->
+    <div id="loading-screen" class="fixed inset-0 bg-white z-50 flex items-center justify-center">
+        <div class="text-center">
+            <div class="w-16 h-16 mx-auto mb-4 relative">
+                <div class="absolute inset-0 border-4 border-primary rounded-full animate-pulse"></div>
+                <div class="absolute inset-2 border-4 border-accent rounded-full animate-ping"></div>
+            </div>
+            <p class="text-gray font-medium">Loading Innovation...</p>
+        </div>
     </div>
 
-    <!-- 1. Sticky Glassmorphism Navbar -->
-    <nav class="sticky top-0 z-50 w-full px-6 py-4 glassmorphism border-b border-gray-200">
-        <div class="container mx-auto flex justify-between items-center">
-            <!-- Ouqro Logo -->
-            <a href="#" class="flex items-center space-x-2 text-2xl font-bold font-space-grotesk tracking-tight text-deep-blue">
-                <div id="logo-animation" class="w-8 h-8"></div>
-                <span class="logo-text">Ouqro.tech</span>
-            </a>
-            <!-- Menu Items -->
-            <div class="hidden md:flex items-center space-x-8">
-                <a href="#hero" class="text-deep-blue font-semibold nav-link nav-item">Home</a>
-                <a href="#ventures" class="text-deep-blue font-semibold nav-link nav-item">Ventures</a>
-                <a href="#ideator" class="text-deep-blue font-semibold nav-link nav-item">Ideator</a>
-                <a href="#about" class="text-deep-blue font-semibold nav-link nav-item">About</a>
-                <a href="#contact" class="text-deep-blue font-semibold nav-link nav-item">Contact</a>
-            </div>
-            <!-- Mobile Menu Button -->
-            <div class="md:hidden">
-                <button id="mobile-menu-button" class="text-deep-blue">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+    <!-- Header -->
+    <header class="header">
+        <nav class="container">
+            <div class="flex items-center justify-between py-4">
+                <!-- Logo -->
+                <div class="flex items-center gap-md">
+                    <a href="/" class="flex items-center gap-sm">
+                        <div class="w-10 h-10 bg-primary rounded-lg flex items-center justify-center">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M12 2L22 7L12 12L2 7L12 2Z" stroke="white" stroke-width="2" stroke-linejoin="round"/>
+                                <path d="M2 17L12 22L22 17" stroke="white" stroke-width="2" stroke-linejoin="round"/>
+                                <path d="M2 12L12 17L22 12" stroke="white" stroke-width="2" stroke-linejoin="round"/>
+                            </svg>
+                        </div>
+                        <span class="text-xl font-bold font-secondary text-dark">Ouqro</span>
+                    </a>
+                </div>
+
+                <!-- Desktop Navigation -->
+                <div class="hidden-mobile flex items-center gap-lg">
+                    <div class="flex items-center gap-lg">
+                        <a href="#home" class="nav-link">Home</a>
+                        <a href="#services" class="nav-link">Services</a>
+                        <a href="#about" class="nav-link">About</a>
+                        <a href="#testimonials" class="nav-link">Testimonials</a>
+                        <a href="#contact" class="nav-link">Contact</a>
+                    </div>
+                    
+                    <!-- Theme Toggle -->
+                    <div class="theme-toggle" title="Toggle dark mode"></div>
+                    
+                    <!-- CTA Button -->
+                    <a href="#contact" class="btn btn-primary">Get Started</a>
+                </div>
+
+                <!-- Mobile Menu Button -->
+                <button class="mobile-menu-toggle hidden-desktop" aria-label="Toggle menu">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M3 12H21" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                        <path d="M3 6H21" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                        <path d="M3 18H21" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
                     </svg>
                 </button>
             </div>
-        </div>
+        </nav>
+
         <!-- Mobile Menu -->
-        <div id="mobile-menu" class="hidden md:hidden mt-4 pb-4">
-            <div class="flex flex-col space-y-4">
-                <a href="#hero" class="text-deep-blue font-semibold">Home</a>
-                <a href="#ventures" class="text-deep-blue font-semibold">Ventures</a>
-                <a href="#ideator" class="text-deep-blue font-semibold">Ideator</a>
-                <a href="#about" class="text-deep-blue font-semibold">About</a>
-                <a href="#contact" class="text-deep-blue font-semibold">Contact</a>
+        <div class="mobile-menu hidden-desktop">
+            <div class="mobile-menu-overlay"></div>
+            <div class="mobile-menu-content">
+                <div class="flex flex-col gap-md p-lg">
+                    <a href="#home" class="mobile-menu-item nav-link">Home</a>
+                    <a href="#services" class="mobile-menu-item nav-link">Services</a>
+                    <a href="#about" class="mobile-menu-item nav-link">About</a>
+                    <a href="#testimonials" class="mobile-menu-item nav-link">Testimonials</a>
+                    <a href="#contact" class="mobile-menu-item nav-link">Contact</a>
+                    <div class="flex items-center justify-between mt-lg">
+                        <span class="text-sm text-gray">Dark Mode</span>
+                        <div class="theme-toggle"></div>
+                    </div>
+                    <a href="#contact" class="btn btn-primary mt-md">Get Started</a>
+                </div>
             </div>
         </div>
-    </nav>
+    </header>
 
     <main>
-        <!-- 2. Hero Section with Three.js Background -->
-        <header id="hero" class="relative hero-bg py-24 md:py-32 px-6 overflow-hidden">
-            <div id="hero-canvas"></div>
-            <div class="container mx-auto flex flex-col items-center text-center relative z-10">
-                <h1 class="text-4xl md:text-6xl lg:text-7xl font-space-grotesk font-bold uppercase tracking-wide text-deep-blue mb-4 hero-title">
-                    <span class="gradient-text">Ouqro</span>
-                </h1>
-                <h2 class="text-xl md:text-3xl font-semibold text-deep-blue mb-4 hero-subtitle">
-                    Multi-Venture <span class="glitch-text">Tech</span> Company
-                </h2>
-                <p class="max-w-3xl text-lg md:text-xl text-gray-600 mb-8 hero-text">
-                    Building and scaling ventures across AI, Web3, and digital infrastructure.
-                </p>
-                <div class="flex flex-col md:flex-row space-y-4 md:space-y-0 md:space-x-4">
-                    <button class="magnetic-button px-8 py-3 rounded-2xl bg-deep-blue text-white font-semibold shadow-lg hover:bg-opacity-90 transition-all duration-300 btn-glow-shadow hero-btn-primary">
-                        Explore Ventures
-                    </button>
-                    <button class="magnetic-button px-8 py-3 rounded-2xl border-2 border-deep-blue text-deep-blue font-semibold hover:bg-deep-blue hover:text-white transition-all duration-300 hover:btn-glow-shadow hero-btn-secondary">
-                        Work With Us
-                    </button>
-                </div>
-            </div>
-        </header>
-
-        <!-- 3. Ventures Section with Staggered Animation -->
-        <section id="ventures" class="py-24 md:py-32 px-6 relative">
-            <div id="particles-js" class="ventures-particles"></div>
-            <div class="container mx-auto relative z-10">
-                <h2 class="text-3xl md:text-5xl font-space-grotesk font-bold uppercase text-center text-deep-blue mb-12 section-title">
-                    Our Ventures
-                </h2>
-                <!-- Ventures Grid -->
-                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 ventures-grid">
-                    <!-- Venture Card 1: AI -->
-                    <div class="p-6 rounded-2xl glassmorphism-light venture-card stagger-item">
-                        <div class="text-deep-blue mb-4 venture-icon">
-                            <div id="ai-animation" class="w-24 h-24 mx-auto"></div>
+        <!-- Hero Section -->
+        <section id="home" class="hero">
+            <div class="container">
+                <div class="grid lg:grid-cols-2 items-center gap-2xl">
+                    <!-- Hero Content -->
+                    <div class="hero-content" data-aos="fade-right">
+                        <h1 class="text-6xl font-bold font-secondary mb-lg">
+                            Innovation Through 
+                            <span class="text-primary">Technology</span>
+                        </h1>
+                        <p class="text-xl text-gray mb-xl">
+                            We build and scale technology ventures that shape the future. 
+                            From AI solutions to Web3 infrastructure, Ouqro transforms 
+                            ideas into market-leading innovations.
+                        </p>
+                        <div class="flex flex-col md:flex-row gap-md">
+                            <a href="#services" class="btn btn-primary">Explore Our Services</a>
+                            <a href="#about" class="btn btn-secondary">Learn About Us</a>
                         </div>
-                        <h3 class="text-xl font-semibold text-deep-blue">AI Solutions</h3>
-                        <p class="mt-2 text-gray-600">Developing intelligent systems for enterprise automation and creative workflows.</p>
+                        
+                        <!-- Stats -->
+                        <div class="grid grid-cols-3 gap-md mt-2xl pt-xl border-t border-gray-200">
+                            <div class="text-center">
+                                <div class="text-3xl font-bold text-primary" data-animate="counter" data-target="50" data-duration="2000">0</div>
+                                <div class="text-sm text-gray">Projects Launched</div>
+                            </div>
+                            <div class="text-center">
+                                <div class="text-3xl font-bold text-primary" data-animate="counter" data-target="100" data-duration="2500">0</div>
+                                <div class="text-sm text-gray">Happy Clients</div>
+                            </div>
+                            <div class="text-center">
+                                <div class="text-3xl font-bold text-primary" data-animate="counter" data-target="25" data-duration="1500">0</div>
+                                <div class="text-sm text-gray">Team Members</div>
+                            </div>
+                        </div>
                     </div>
 
-                    <!-- Venture Card 2: Web3 -->
-                    <div class="p-6 rounded-2xl glassmorphism-light venture-card stagger-item">
-                        <div class="text-deep-blue mb-4 venture-icon">
-                            <div id="web3-animation" class="w-24 h-24 mx-auto"></div>
+                    <!-- Hero Illustration -->
+                    <div class="hero-illustration" data-aos="fade-left" data-aos-delay="200">
+                        <div class="relative">
+                            <svg width="600" height="500" viewBox="0 0 600 500" class="w-full h-auto">
+                                <!-- Tech Illustration -->
+                                <defs>
+                                    <linearGradient id="gradient1" x1="0%" y1="0%" x2="100%" y2="100%">
+                                        <stop offset="0%" style="stop-color:#0066cc;stop-opacity:1" />
+                                        <stop offset="100%" style="stop-color:#4a90e2;stop-opacity:1" />
+                                    </linearGradient>
+                                    <linearGradient id="gradient2" x1="0%" y1="0%" x2="100%" y2="100%">
+                                        <stop offset="0%" style="stop-color:#00d084;stop-opacity:1" />
+                                        <stop offset="100%" style="stop-color:#4a90e2;stop-opacity:1" />
+                                    </linearGradient>
+                                </defs>
+                                
+                                <!-- Background circles -->
+                                <circle cx="300" cy="250" r="200" fill="url(#gradient1)" opacity="0.1" />
+                                <circle cx="300" cy="250" r="150" fill="url(#gradient2)" opacity="0.15" />
+                                <circle cx="300" cy="250" r="100" fill="url(#gradient1)" opacity="0.2" />
+                                
+                                <!-- Tech nodes -->
+                                <circle cx="200" cy="150" r="8" fill="#0066cc" />
+                                <circle cx="400" cy="150" r="8" fill="#4a90e2" />
+                                <circle cx="300" cy="100" r="8" fill="#00d084" />
+                                <circle cx="150" cy="250" r="8" fill="#0066cc" />
+                                <circle cx="450" cy="250" r="8" fill="#4a90e2" />
+                                <circle cx="300" cy="400" r="8" fill="#00d084" />
+                                <circle cx="200" cy="350" r="8" fill="#0066cc" />
+                                <circle cx="400" cy="350" r="8" fill="#4a90e2" />
+                                
+                                <!-- Connecting lines -->
+                                <line x1="300" y1="100" x2="200" y2="150" stroke="#0066cc" stroke-width="2" opacity="0.6" />
+                                <line x1="300" y1="100" x2="400" y2="150" stroke="#4a90e2" stroke-width="2" opacity="0.6" />
+                                <line x1="200" y1="150" x2="150" y2="250" stroke="#0066cc" stroke-width="2" opacity="0.6" />
+                                <line x1="400" y1="150" x2="450" y2="250" stroke="#4a90e2" stroke-width="2" opacity="0.6" />
+                                <line x1="150" y1="250" x2="200" y2="350" stroke="#0066cc" stroke-width="2" opacity="0.6" />
+                                <line x1="450" y1="250" x2="400" y2="350" stroke="#4a90e2" stroke-width="2" opacity="0.6" />
+                                <line x1="200" y1="350" x2="300" y2="400" stroke="#00d084" stroke-width="2" opacity="0.6" />
+                                <line x1="400" y1="350" x2="300" y2="400" stroke="#00d084" stroke-width="2" opacity="0.6" />
+                                
+                                <!-- Central hub -->
+                                <circle cx="300" cy="250" r="20" fill="url(#gradient1)" />
+                                <circle cx="300" cy="250" r="12" fill="white" />
+                                <circle cx="300" cy="250" r="6" fill="#0066cc" />
+                            </svg>
                         </div>
-                        <h3 class="text-xl font-semibold text-deep-blue">Web3 & Blockchain</h3>
-                        <p class="mt-2 text-gray-600">Forging decentralized applications and infrastructure for a new digital era.</p>
-                    </div>
-
-                    <!-- Venture Card 3: Digital Infrastructure -->
-                    <div class="p-6 rounded-2xl glassmorphism-light venture-card stagger-item">
-                        <div class="text-deep-blue mb-4 venture-icon">
-                            <div id="infra-animation" class="w-24 h-24 mx-auto"></div>
-                        </div>
-                        <h3 class="text-xl font-semibold text-deep-blue">Digital Infrastructure</h3>
-                        <p class="mt-2 text-gray-600">Building scalable cloud platforms and robust data networks.</p>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- 4. AI Venture Ideator with Animation -->
-        <section id="ideator" class="py-24 md:py-32 px-6 bg-off-white relative">
-            <div class="container mx-auto max-w-3xl text-center">
-                <h2 class="text-3xl md:text-5xl font-space-grotesk font-bold uppercase text-deep-blue mb-6 section-title">
-                     AI Venture Ideator
-                </h2>
-                <p class="text-lg text-gray-600 mb-8 section-text">
-                    Describe your business idea below, and let our AI generate a high-level venture blueprint.
-                </p>
-                <div class="space-y-6 text-left">
-                    <textarea id="ideaInput" rows="4" placeholder="e.g., An app that uses AI to create personalized study plans for students."
-                              class="w-full rounded-2xl border-2 border-gray-300 bg-transparent text-gray-800 placeholder-gray-500 shadow-sm focus:ring-electric-blue focus:border-electric-blue input-glow p-4 transition-colors"></textarea>
-                    <div class="text-center">
-                        <button id="generateBtn" class="magnetic-button px-8 py-3 rounded-2xl bg-electric-blue text-deep-blue font-semibold hover:bg-opacity-90 transition-all duration-300 btn-glow-shadow">
-                            Generate Blueprint 
-                        </button>
-                    </div>
-                </div>
-                <!-- Output Display Area -->
-                <div id="outputContainer" class="mt-12 hidden">
-                    <h3 class="text-2xl font-space-grotesk font-semibold text-left mb-4 text-deep-blue">Venture Blueprint</h3>
-                    <div id="outputArea" class="text-left p-6 rounded-2xl glassmorphism-light border border-gray-200 min-h-[200px] flex items-center justify-center">
-                        <p class="text-gray-600">Your venture blueprint will appear here.</p>
-                    </div>
-                </div>
-            </div>
-            <!-- AI Brain Animation -->
-            <div id="ai-brain-container" class="absolute right-0 top-0 w-32 h-32 md:w-64 md:h-64 opacity-10"></div>
-        </section>
-
-        <!-- 5. About Section with 3D Globe -->
-        <section id="about" class="py-24 md:py-32 px-6 bg-off-white relative">
-            <div id="about-canvas" class="opacity-10"></div>
-            <div class="container mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 items-center relative z-10">
-                <!-- Left: Mission & Values Text -->
-                <div class="about-text">
-                    <h2 class="text-3xl md:text-5xl font-space-grotesk font-bold uppercase text-deep-blue mb-6 section-title">
-                        About Ouqro
-                    </h2>
-                    <p class="text-lg text-gray-600 mb-8 section-text">
-                        At Ouqro, we're more than just a company; we're an ecosystem of innovation. We
-                        believe in creating sustainable, forward-thinking ventures that shape the
-                        future of technology. Our mission is to diversify risk and maximize
-                        growth by fostering a portfolio of high-impact companies.
+        <!-- Services/Features Section -->
+        <section id="services" class="py-2xl bg-light">
+            <div class="container">
+                <div class="text-center mb-2xl" data-aos="fade-up">
+                    <h2 class="text-4xl font-bold font-secondary mb-md">Our Services</h2>
+                    <p class="text-xl text-gray max-w-3xl mx-auto">
+                        We deliver cutting-edge technology solutions that drive innovation and growth across multiple industries.
                     </p>
-                    <div class="grid grid-cols-2 gap-4 values-grid">
-                        <!-- Value Card 1 -->
-                        <div class="p-4 rounded-xl border border-gray-300 stagger-item">
-                            <h4 class="font-semibold text-deep-blue">Innovation</h4>
-                            <p class="text-sm text-gray-600">Embracing the new and challenging the status quo.</p>
-                        </div>
-                        <!-- Value Card 2 -->
-                        <div class="p-4 rounded-xl border border-gray-300 stagger-item">
-                            <h4 class="font-semibold text-deep-blue">Diversification</h4>
-                            <p class="text-sm text-gray-600">Building a resilient portfolio across multiple sectors.</p>
-                        </div>
-                        <!-- Value Card 3 -->
-                        <div class="p-4 rounded-xl border border-gray-300 stagger-item">
-                            <h4 class="font-semibold text-deep-blue">Scalability</h4>
-                            <p class="text-sm text-gray-600">Creating solutions designed for exponential growth.</p>
-                        </div>
-                        <!-- Value Card 4 -->
-                        <div class="p-4 rounded-xl border border-gray-300 stagger-item">
-                            <h4 class="font-semibold text-deep-blue">Reliability</h4>
-                            <p class="text-sm text-gray-600">Delivering consistent performance and trust.</p>
-                        </div>
-                    </div>
                 </div>
-                <!-- Right: 3D Tech Visualization -->
-                <div id="tech-visual" class="flex justify-center items-center rounded-2xl overflow-hidden h-[400px]">
-                    <!-- 3D visualization will be injected here by Three.js -->
+
+                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-lg">
+                    <!-- Service 1: AI Solutions -->
+                    <div class="feature-card" data-aos="fade-up" data-aos-delay="100">
+                        <div class="mb-lg">
+                            <div class="w-16 h-16 bg-primary rounded-lg flex items-center justify-center mb-md">
+                                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M9 12L11 14L15 10" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                    <path d="M21 12C21 16.9706 16.9706 21 12 21C7.02944 21 3 16.9706 3 12C3 7.02944 7.02944 3 12 3C16.9706 3 21 7.02944 21 12Z" stroke="white" stroke-width="2"/>
+                                </svg>
+                            </div>
+                            <h3 class="text-xl font-semibold mb-sm">AI Solutions</h3>
+                            <p class="text-gray">Intelligent systems for enterprise automation, machine learning models, and AI-powered applications that drive business efficiency.</p>
+                        </div>
+                        <a href="#contact" class="text-primary font-medium hover:text-primary-dark transition-colors">Learn More →</a>
+                    </div>
+
+                    <!-- Service 2: Web3 & Blockchain -->
+                    <div class="feature-card" data-aos="fade-up" data-aos-delay="200">
+                        <div class="mb-lg">
+                            <div class="w-16 h-16 bg-secondary rounded-lg flex items-center justify-center mb-md">
+                                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M13 2L3 14H12L11 22L21 10H12L13 2Z" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>
+                            </div>
+                            <h3 class="text-xl font-semibold mb-sm">Web3 & Blockchain</h3>
+                            <p class="text-gray">Decentralized applications, smart contracts, and blockchain infrastructure for the new digital economy.</p>
+                        </div>
+                        <a href="#contact" class="text-primary font-medium hover:text-primary-dark transition-colors">Learn More →</a>
+                    </div>
+
+                    <!-- Service 3: Digital Infrastructure -->
+                    <div class="feature-card" data-aos="fade-up" data-aos-delay="300">
+                        <div class="mb-lg">
+                            <div class="w-16 h-16 bg-accent rounded-lg flex items-center justify-center mb-md">
+                                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <rect x="2" y="3" width="20" height="14" rx="2" ry="2" stroke="white" stroke-width="2"/>
+                                    <line x1="8" y1="21" x2="16" y2="21" stroke="white" stroke-width="2" stroke-linecap="round"/>
+                                    <line x1="12" y1="17" x2="12" y2="21" stroke="white" stroke-width="2" stroke-linecap="round"/>
+                                </svg>
+                            </div>
+                            <h3 class="text-xl font-semibold mb-sm">Digital Infrastructure</h3>
+                            <p class="text-gray">Scalable cloud platforms, robust data networks, and enterprise-grade digital solutions.</p>
+                        </div>
+                        <a href="#contact" class="text-primary font-medium hover:text-primary-dark transition-colors">Learn More →</a>
+                    </div>
+
+                    <!-- Service 4: Innovation Consulting -->
+                    <div class="feature-card" data-aos="fade-up" data-aos-delay="400">
+                        <div class="mb-lg">
+                            <div class="w-16 h-16 bg-primary rounded-lg flex items-center justify-center mb-md">
+                                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <circle cx="12" cy="12" r="3" stroke="white" stroke-width="2"/>
+                                    <path d="M19.4 15A1.65 1.65 0 0 0 21 13.35V10.65A1.65 1.65 0 0 0 19.4 9L17.7 7.2A1.65 1.65 0 0 0 16.35 7H7.65A1.65 1.65 0 0 0 6.3 7.2L4.6 9A1.65 1.65 0 0 0 3 10.65V13.35A1.65 1.65 0 0 0 4.6 15L6.3 16.8A1.65 1.65 0 0 0 7.65 17H16.35A1.65 1.65 0 0 0 17.7 16.8L19.4 15Z" stroke="white" stroke-width="2"/>
+                                </svg>
+                            </div>
+                            <h3 class="text-xl font-semibold mb-sm">Innovation Consulting</h3>
+                            <p class="text-gray">Strategic guidance and technical expertise to help businesses navigate digital transformation.</p>
+                        </div>
+                        <a href="#contact" class="text-primary font-medium hover:text-primary-dark transition-colors">Learn More →</a>
+                    </div>
+
+                    <!-- Service 5: Venture Development -->
+                    <div class="feature-card" data-aos="fade-up" data-aos-delay="500">
+                        <div class="mb-lg">
+                            <div class="w-16 h-16 bg-secondary rounded-lg flex items-center justify-center mb-md">
+                                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M12 2L15.09 8.26L22 9L17 14L18.18 21L12 17.77L5.82 21L7 14L2 9L8.91 8.26L12 2Z" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>
+                            </div>
+                            <h3 class="text-xl font-semibold mb-sm">Venture Development</h3>
+                            <p class="text-gray">From idea to market - we help build and scale technology ventures across multiple industries.</p>
+                        </div>
+                        <a href="#contact" class="text-primary font-medium hover:text-primary-dark transition-colors">Learn More →</a>
+                    </div>
+
+                    <!-- Service 6: Technical Training -->
+                    <div class="feature-card" data-aos="fade-up" data-aos-delay="600">
+                        <div class="mb-lg">
+                            <div class="w-16 h-16 bg-accent rounded-lg flex items-center justify-center mb-md">
+                                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M2 3H8A4 4 0 0 1 12 7V21A3 3 0 0 0 9 18H2V3Z" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                    <path d="M22 3H16A4 4 0 0 0 12 7V21A3 3 0 0 1 15 18H22V3Z" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>
+                            </div>
+                            <h3 class="text-xl font-semibold mb-sm">Technical Training</h3>
+                            <p class="text-gray">Comprehensive training programs to upskill teams in the latest technologies and best practices.</p>
+                        </div>
+                        <a href="#contact" class="text-primary font-medium hover:text-primary-dark transition-colors">Learn More →</a>
+                    </div>
                 </div>
             </div>
         </section>
 
-        <!-- 6. Contact Section with Interactive Form -->
-        <section id="contact" class="py-24 md:py-32 px-6">
-            <div class="container mx-auto max-w-2xl text-center">
-                <h2 class="text-3xl md:text-5xl font-space-grotesk font-bold uppercase text-deep-blue mb-6 section-title">
-                    Contact Us
-                </h2>
-                <p class="text-lg text-gray-600 mb-8 section-text">
-                    Have a question or a project in mind? Reach out to us below.
-                </p>
-                <!-- Interactive form with animations -->
-                <form action="#" method="POST" class="space-y-6 text-left contact-form">
-                    <div class="form-field">
-                        <label for="name" class="block text-sm font-medium text-gray-700">Name</label>
-                        <input type="text" id="name" name="name" required
-                               class="mt-1 block w-full rounded-2xl border-gray-300 shadow-sm focus:ring-deep-blue focus:border-deep-blue input-glow">
+        <!-- About Section -->
+        <section id="about" class="py-2xl">
+            <div class="container">
+                <div class="grid lg:grid-cols-2 items-center gap-2xl">
+                    <!-- About Content -->
+                    <div data-animate="fade-right">
+                        <h2 class="text-4xl font-bold font-secondary mb-lg">About Ouqro</h2>
+                        <p class="text-lg text-gray mb-lg">
+                            At Ouqro, we're more than just a company; we're an ecosystem of innovation. 
+                            We believe in creating sustainable, forward-thinking ventures that shape the 
+                            future of technology.
+                        </p>
+                        <p class="text-lg text-gray mb-xl">
+                            Our mission is to diversify risk and maximize growth by fostering a portfolio 
+                            of high-impact companies that leverage cutting-edge technologies to solve 
+                            real-world problems.
+                        </p>
+
+                        <!-- Values Grid -->
+                        <div class="grid grid-cols-2 gap-md">
+                            <div class="p-md border border-gray-200 rounded-lg" data-animate="scale" data-delay="100">
+                                <h4 class="font-semibold text-dark mb-sm">Innovation</h4>
+                                <p class="text-sm text-gray">Embracing the new and challenging the status quo.</p>
+                            </div>
+                            <div class="p-md border border-gray-200 rounded-lg" data-animate="scale" data-delay="200">
+                                <h4 class="font-semibold text-dark mb-sm">Diversification</h4>
+                                <p class="text-sm text-gray">Building a resilient portfolio across multiple sectors.</p>
+                            </div>
+                            <div class="p-md border border-gray-200 rounded-lg" data-animate="scale" data-delay="300">
+                                <h4 class="font-semibold text-dark mb-sm">Scalability</h4>
+                                <p class="text-sm text-gray">Creating solutions designed for exponential growth.</p>
+                            </div>
+                            <div class="p-md border border-gray-200 rounded-lg" data-animate="scale" data-delay="400">
+                                <h4 class="font-semibold text-dark mb-sm">Reliability</h4>
+                                <p class="text-sm text-gray">Delivering consistent performance and trust.</p>
+                            </div>
+                        </div>
                     </div>
-                    <div class="form-field">
-                        <label for="email" class="block text-sm font-medium text-gray-700">Email</label>
-                        <input type="email" id="email" name="email" required
-                               class="mt-1 block w-full rounded-2xl border-gray-300 shadow-sm focus:ring-deep-blue focus:border-deep-blue input-glow">
+
+                    <!-- About Visual -->
+                    <div data-animate="fade-left" data-delay="200">
+                        <div class="relative">
+                            <div class="bg-primary rounded-2xl p-xl text-center">
+                                <div class="text-white">
+                                    <div class="text-6xl font-bold mb-md">5+</div>
+                                    <div class="text-xl mb-lg">Years of Experience</div>
+                                    <div class="grid grid-cols-2 gap-lg text-sm">
+                                        <div>
+                                            <div class="text-2xl font-bold">50+</div>
+                                            <div>Projects</div>
+                                        </div>
+                                        <div>
+                                            <div class="text-2xl font-bold">25+</div>
+                                            <div>Team Members</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                    <div class="form-field">
-                        <label for="message" class="block text-sm font-medium text-gray-700">Message</label>
-                        <textarea id="message" name="message" rows="4" required
-                                  class="mt-1 block w-full rounded-2xl border-gray-300 shadow-sm focus:ring-deep-blue focus:border-deep-blue input-glow"></textarea>
+                </div>
+            </div>
+        </section>
+
+        <!-- Testimonials Section -->
+        <section id="testimonials" class="py-2xl bg-light">
+            <div class="container">
+                <div class="text-center mb-2xl" data-animate="fade-up">
+                    <h2 class="text-4xl font-bold font-secondary mb-md">What Our Clients Say</h2>
+                    <p class="text-xl text-gray max-w-3xl mx-auto">
+                        Don't just take our word for it - hear from the companies we've helped transform.
+                    </p>
+                </div>
+
+                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-lg">
+                    <!-- Testimonial 1 -->
+                    <div class="testimonial-card" data-animate="fade-up" data-delay="100">
+                        <div class="mb-lg">
+                            <div class="flex items-center mb-md">
+                                <div class="flex text-accent">
+                                    <span>★★★★★</span>
+                                </div>
+                            </div>
+                            <p class="text-gray mb-lg">"Ouqro transformed our business with their AI solutions. The automation they implemented has increased our efficiency by 300%."</p>
+                        </div>
+                        <div class="flex items-center gap-md">
+                            <div class="testimonial-avatar bg-primary rounded-full w-12 h-12 flex items-center justify-center text-white font-bold">
+                                S
+                            </div>
+                            <div>
+                                <div class="font-semibold">Sarah Johnson</div>
+                                <div class="text-sm text-gray">CEO, TechFlow Inc.</div>
+                            </div>
+                        </div>
                     </div>
-                    <div class="text-center">
-                        <button type="submit" class="magnetic-button px-8 py-3 rounded-2xl bg-deep-blue text-white font-semibold shadow-lg hover:bg-opacity-90 transition-all duration-300 btn-glow-shadow">
-                            Send Message
-                        </button>
+
+                    <!-- Testimonial 2 -->
+                    <div class="testimonial-card" data-animate="fade-up" data-delay="200">
+                        <div class="mb-lg">
+                            <div class="flex items-center mb-md">
+                                <div class="flex text-accent">
+                                    <span>★★★★★</span>
+                                </div>
+                            </div>
+                            <p class="text-gray mb-lg">"The Web3 infrastructure Ouqro built for us is robust and scalable. They truly understand the future of technology."</p>
+                        </div>
+                        <div class="flex items-center gap-md">
+                            <div class="testimonial-avatar bg-secondary rounded-full w-12 h-12 flex items-center justify-center text-white font-bold">
+                                M
+                            </div>
+                            <div>
+                                <div class="font-semibold">Michael Chen</div>
+                                <div class="text-sm text-gray">CTO, BlockChain Solutions</div>
+                            </div>
+                        </div>
                     </div>
-                </form>
+
+                    <!-- Testimonial 3 -->
+                    <div class="testimonial-card" data-animate="fade-up" data-delay="300">
+                        <div class="mb-lg">
+                            <div class="flex items-center mb-md">
+                                <div class="flex text-accent">
+                                    <span>★★★★★</span>
+                                </div>
+                            </div>
+                            <p class="text-gray mb-lg">"Working with Ouqro was seamless. Their team's expertise and dedication made our digital transformation smooth and successful."</p>
+                        </div>
+                        <div class="flex items-center gap-md">
+                            <div class="testimonial-avatar bg-accent rounded-full w-12 h-12 flex items-center justify-center text-white font-bold">
+                                E
+                            </div>
+                            <div>
+                                <div class="font-semibold">Emily Rodriguez</div>
+                                <div class="text-sm text-gray">Founder, InnovateCorp</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="py-2xl">
+            <div class="container">
+                <div class="max-w-4xl mx-auto">
+                    <div class="text-center mb-2xl" data-animate="fade-up">
+                        <h2 class="text-4xl font-bold font-secondary mb-md">Get In Touch</h2>
+                        <p class="text-xl text-gray">
+                            Ready to transform your business? Let's discuss how we can help you innovate and grow.
+                        </p>
+                    </div>
+
+                    <div class="grid lg:grid-cols-2 gap-2xl">
+                        <!-- Contact Form -->
+                        <div data-animate="fade-right">
+                            <form class="space-y-lg" data-validate>
+                                <div>
+                                    <label for="name" class="block text-sm font-medium text-dark mb-sm">Name *</label>
+                                    <input type="text" id="name" name="name" required 
+                                           class="w-full px-lg py-md border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent">
+                                </div>
+                                <div>
+                                    <label for="email" class="block text-sm font-medium text-dark mb-sm">Email *</label>
+                                    <input type="email" id="email" name="email" required 
+                                           class="w-full px-lg py-md border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent">
+                                </div>
+                                <div>
+                                    <label for="company" class="block text-sm font-medium text-dark mb-sm">Company</label>
+                                    <input type="text" id="company" name="company" 
+                                           class="w-full px-lg py-md border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent">
+                                </div>
+                                <div>
+                                    <label for="message" class="block text-sm font-medium text-dark mb-sm">Message *</label>
+                                    <textarea id="message" name="message" rows="4" required 
+                                              class="w-full px-lg py-md border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent resize-vertical"></textarea>
+                                </div>
+                                <button type="submit" class="btn btn-primary w-full">
+                                    Send Message
+                                </button>
+                            </form>
+                        </div>
+
+                        <!-- Contact Info -->
+                        <div data-animate="fade-left" data-delay="200">
+                            <div class="bg-dark text-white rounded-2xl p-xl">
+                                <h3 class="text-2xl font-bold mb-lg">Let's Start a Conversation</h3>
+                                <p class="text-lg mb-xl opacity-90">
+                                    We're here to help you navigate the future of technology. 
+                                    Reach out to us and let's build something amazing together.
+                                </p>
+                                
+                                <div class="space-y-lg">
+                                    <div class="flex items-center gap-md">
+                                        <div class="w-12 h-12 bg-primary rounded-lg flex items-center justify-center">
+                                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                <path d="M4 4H20C21.1 4 22 4.9 22 6V18C22 19.1 21.1 20 20 20H4C2.9 20 2 19.1 2 18V6C2 4.9 2.9 4 4 4Z" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                                <polyline points="22,6 12,13 2,6" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                            </svg>
+                                        </div>
+                                        <div>
+                                            <div class="font-semibold">Email</div>
+                                            <div class="opacity-90">hello@ouqro.tech</div>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="flex items-center gap-md">
+                                        <div class="w-12 h-12 bg-primary rounded-lg flex items-center justify-center">
+                                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                <path d="M21 10C21 17 12 23 12 23S3 17 3 10A9 9 0 0 1 12 1A9 9 0 0 1 21 10Z" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                                <circle cx="12" cy="10" r="3" stroke="white" stroke-width="2"/>
+                                            </svg>
+                                        </div>
+                                        <div>
+                                            <div class="font-semibold">Location</div>
+                                            <div class="opacity-90">Global - Remote First</div>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="flex items-center gap-md">
+                                        <div class="w-12 h-12 bg-primary rounded-lg flex items-center justify-center">
+                                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                <path d="M22 16.92V19.92A2 2 0 0 1 20.18 22A19.79 19.79 0 0 1 8.63 13.37A19.5 19.5 0 0 1 2 2.18A2 2 0 0 1 4.11 2H7.11A2 2 0 0 1 9.11 3.82C9.11 5.72 9.78 7.44 10.11 8.57A2 2 0 0 1 9.43 10.9L8.05 12.28A16 16 0 0 0 11.72 15.95L13.1 14.57A2 2 0 0 1 15.43 13.89A16.07 16.07 0 0 0 18.18 14.89A2 2 0 0 1 20 16.92Z" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                            </svg>
+                                        </div>
+                                        <div>
+                                            <div class="font-semibold">Response Time</div>
+                                            <div class="opacity-90">Within 24 hours</div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Social Links -->
+                                <div class="mt-xl pt-xl border-t border-gray-600">
+                                    <div class="text-sm mb-md opacity-75">Follow us</div>
+                                    <div class="flex gap-md">
+                                        <a href="#" class="w-10 h-10 bg-white bg-opacity-10 rounded-lg flex items-center justify-center hover:bg-opacity-20 transition-colors">
+                                            <svg width="16" height="16" viewBox="0 0 24 24" fill="white">
+                                                <path d="M24 4.557c-.883.392-1.832.656-2.828.775 1.017-.609 1.798-1.574 2.165-2.724-.951.564-2.005.974-3.127 1.195-.897-.957-2.178-1.555-3.594-1.555-3.179 0-5.515 2.966-4.797 6.045-4.091-.205-7.719-2.165-10.148-5.144-1.29 2.213-.669 5.108 1.523 6.574-.806-.026-1.566-.247-2.229-.616-.054 2.281 1.581 4.415 3.949 4.89-.693.188-1.452.232-2.224.084.626 1.956 2.444 3.379 4.6 3.419-2.07 1.623-4.678 2.348-7.29 2.04 2.179 1.397 4.768 2.212 7.548 2.212 9.142 0 14.307-7.721 13.995-14.646.962-.695 1.797-1.562 2.457-2.549z"/>
+                                            </svg>
+                                        </a>
+                                        <a href="#" class="w-10 h-10 bg-white bg-opacity-10 rounded-lg flex items-center justify-center hover:bg-opacity-20 transition-colors">
+                                            <svg width="16" height="16" viewBox="0 0 24 24" fill="white">
+                                                <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+                                            </svg>
+                                        </a>
+                                        <a href="#" class="w-10 h-10 bg-white bg-opacity-10 rounded-lg flex items-center justify-center hover:bg-opacity-20 transition-colors">
+                                            <svg width="16" height="16" viewBox="0 0 24 24" fill="white">
+                                                <path d="M12.017 0C5.396 0 .029 5.367.029 11.987c0 5.079 3.158 9.417 7.618 11.174-.105-.949-.199-2.403.041-3.439.219-.937 1.406-5.957 1.406-5.957s-.359-.72-.359-1.781c0-1.663.967-2.911 2.168-2.911 1.024 0 1.518.769 1.518 1.688 0 1.029-.653 2.567-.992 3.992-.285 1.193.6 2.165 1.775 2.165 2.128 0 3.768-2.245 3.768-5.487 0-2.861-2.063-4.869-5.008-4.869-3.41 0-5.409 2.562-5.409 5.199 0 1.033.394 2.143.889 2.741.099.12.112.225.085.345-.09.375-.293 1.199-.334 1.363-.053.225-.172.271-.402.165-1.495-.69-2.433-2.878-2.433-4.646 0-3.776 2.748-7.252 7.92-7.252 4.158 0 7.392 2.967 7.392 6.923 0 4.135-2.607 7.462-6.233 7.462-1.214 0-2.357-.629-2.748-1.378l-.748 2.853c-.271 1.043-1.002 2.35-1.492 3.146C9.57 23.812 10.763 24.009 12.017 24.009c6.624 0 11.99-5.367 11.99-11.986C24.007 5.367 18.641.001 12.017.001z"/>
+                                            </svg>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </section>
     </main>
 
-    <!-- 7. Footer with Animation -->
-    <footer class="bg-deep-blue text-white py-12 px-6">
-        <div class="container mx-auto">
-            <div class="flex flex-col md:flex-row justify-between items-center mb-6">
-                <!-- Left: Logo -->
-                <div class="flex items-center space-x-2 text-2xl font-bold font-space-grotesk tracking-tight text-white mb-4 md:mb-0">
-                    <div id="footer-logo-animation" class="w-8 h-8"></div>
-                    <span>Ouqro.tech</span>
+    <!-- Footer -->
+    <footer class="bg-dark text-white py-2xl">
+        <div class="container">
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-lg mb-xl">
+                <!-- Company Info -->
+                <div>
+                    <div class="flex items-center gap-sm mb-lg">
+                        <div class="w-8 h-8 bg-primary rounded-lg flex items-center justify-center">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M12 2L22 7L12 12L2 7L12 2Z" stroke="white" stroke-width="2" stroke-linejoin="round"/>
+                                <path d="M2 17L12 22L22 17" stroke="white" stroke-width="2" stroke-linejoin="round"/>
+                                <path d="M2 12L12 17L22 12" stroke="white" stroke-width="2" stroke-linejoin="round"/>
+                            </svg>
+                        </div>
+                        <span class="text-xl font-bold font-secondary">Ouqro</span>
+                    </div>
+                    <p class="text-sm opacity-75 mb-lg">
+                        Innovation through technology. Building the future, one venture at a time.
+                    </p>
+                    <div class="flex gap-md">
+                        <a href="#" class="w-8 h-8 bg-white bg-opacity-10 rounded-lg flex items-center justify-center hover:bg-opacity-20 transition-colors">
+                            <svg width="12" height="12" viewBox="0 0 24 24" fill="white">
+                                <path d="M24 4.557c-.883.392-1.832.656-2.828.775 1.017-.609 1.798-1.574 2.165-2.724-.951.564-2.005.974-3.127 1.195-.897-.957-2.178-1.555-3.594-1.555-3.179 0-5.515 2.966-4.797 6.045-4.091-.205-7.719-2.165-10.148-5.144-1.29 2.213-.669 5.108 1.523 6.574-.806-.026-1.566-.247-2.229-.616-.054 2.281 1.581 4.415 3.949 4.89-.693.188-1.452.232-2.224.084.626 1.956 2.444 3.379 4.6 3.419-2.07 1.623-4.678 2.348-7.29 2.04 2.179 1.397 4.768 2.212 7.548 2.212 9.142 0 14.307-7.721 13.995-14.646.962-.695 1.797-1.562 2.457-2.549z"/>
+                            </svg>
+                        </a>
+                        <a href="#" class="w-8 h-8 bg-white bg-opacity-10 rounded-lg flex items-center justify-center hover:bg-opacity-20 transition-colors">
+                            <svg width="12" height="12" viewBox="0 0 24 24" fill="white">
+                                <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+                            </svg>
+                        </a>
+                        <a href="#" class="w-8 h-8 bg-white bg-opacity-10 rounded-lg flex items-center justify-center hover:bg-opacity-20 transition-colors">
+                            <svg width="12" height="12" viewBox="0 0 24 24" fill="white">
+                                <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+                            </svg>
+                        </a>
+                    </div>
                 </div>
-                <!-- Right: Quick Links -->
-                <div class="flex flex-wrap justify-center space-x-6 md:space-x-8 text-sm">
-                    <a href="#hero" class="hover:text-electric-blue transition-colors">Home</a>
-                    <a href="#ventures" class="hover:text-electric-blue transition-colors">Ventures</a>
-                    <a href="#ideator" class="hover:text-electric-blue transition-colors">Ideator</a>
-                    <a href="#about" class="hover:text-electric-blue transition-colors">About</a>
-                    <a href="#contact" class="hover:text-electric-blue transition-colors">Contact</a>
+
+                <!-- Quick Links -->
+                <div>
+                    <h4 class="font-semibold mb-lg">Quick Links</h4>
+                    <ul class="space-y-sm text-sm opacity-75">
+                        <li><a href="#home" class="hover:opacity-100 transition-opacity">Home</a></li>
+                        <li><a href="#services" class="hover:opacity-100 transition-opacity">Services</a></li>
+                        <li><a href="#about" class="hover:opacity-100 transition-opacity">About</a></li>
+                        <li><a href="#testimonials" class="hover:opacity-100 transition-opacity">Testimonials</a></li>
+                        <li><a href="#contact" class="hover:opacity-100 transition-opacity">Contact</a></li>
+                    </ul>
+                </div>
+
+                <!-- Services -->
+                <div>
+                    <h4 class="font-semibold mb-lg">Services</h4>
+                    <ul class="space-y-sm text-sm opacity-75">
+                        <li><a href="#services" class="hover:opacity-100 transition-opacity">AI Solutions</a></li>
+                        <li><a href="#services" class="hover:opacity-100 transition-opacity">Web3 & Blockchain</a></li>
+                        <li><a href="#services" class="hover:opacity-100 transition-opacity">Digital Infrastructure</a></li>
+                        <li><a href="#services" class="hover:opacity-100 transition-opacity">Innovation Consulting</a></li>
+                        <li><a href="#services" class="hover:opacity-100 transition-opacity">Venture Development</a></li>
+                    </ul>
+                </div>
+
+                <!-- Contact Info -->
+                <div>
+                    <h4 class="font-semibold mb-lg">Contact</h4>
+                    <ul class="space-y-sm text-sm opacity-75">
+                        <li>hello@ouqro.tech</li>
+                        <li>Global - Remote First</li>
+                        <li>24/7 Support Available</li>
+                    </ul>
                 </div>
             </div>
-            <!-- Bottom: Copyright Text -->
-            <div class="text-center text-xs text-gray-400 border-t border-gray-700 pt-6">
-                © 2025 Ouqro. All Rights Reserved.
+
+            <!-- Copyright -->
+            <div class="pt-xl border-t border-gray-600 text-center text-sm opacity-75">
+                © 2024 Ouqro. All rights reserved. | Built with ❤️ for innovation.
             </div>
         </div>
     </footer>
 
-    <script src="scripts.js"></script>
+    <!-- JavaScript -->
+    <script src="/assets/js/aos.js"></script>
+    <script src="/assets/js/slider.js"></script>
+    <script src="/assets/js/main.js"></script>
+    
+    <!-- Mobile Menu Styles -->
+    <style>
+        .mobile-menu {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100vh;
+            z-index: 999;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease-in-out;
+        }
+
+        .mobile-menu.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .mobile-menu-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(5px);
+        }
+
+        .mobile-menu-content {
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 80%;
+            max-width: 320px;
+            height: 100%;
+            background: white;
+            transform: translateX(100%);
+            transition: transform 0.3s ease-in-out;
+        }
+
+        .mobile-menu.active .mobile-menu-content {
+            transform: translateX(0);
+        }
+
+        .mobile-menu-toggle.active svg {
+            transform: rotate(45deg);
+        }
+
+        .mobile-menu-toggle svg {
+            transition: transform 0.3s ease-in-out;
+        }
+
+        body.menu-open {
+            overflow: hidden;
+        }
+
+        /* Header scroll effects */
+        .header.scrolled {
+            background-color: rgba(255, 255, 255, 0.98);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Animation classes */
+        .animate-pulse {
+            animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+        }
+
+        .animate-ping {
+            animation: ping 1s cubic-bezier(0, 0, 0.2, 1) infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% {
+                opacity: 1;
+            }
+            50% {
+                opacity: .5;
+            }
+        }
+
+        @keyframes ping {
+            0% {
+                transform: scale(1);
+                opacity: 1;
+            }
+            75%, 100% {
+                transform: scale(2);
+                opacity: 0;
+            }
+        }
+
+        /* Form validation styles */
+        .field-error {
+            color: #dc2626;
+            font-size: 0.875rem;
+            margin-top: 0.25rem;
+            opacity: 0;
+            transition: opacity 0.3s ease-in-out;
+        }
+
+        input.error,
+        textarea.error {
+            border-color: #dc2626;
+            box-shadow: 0 0 0 3px rgba(220, 38, 38, 0.1);
+        }
+
+        .form-message {
+            padding: 1rem;
+            border-radius: 0.5rem;
+            margin-top: 1rem;
+            opacity: 0;
+            transition: opacity 0.3s ease-in-out;
+        }
+
+        .form-message.success {
+            background-color: #dcfce7;
+            color: #166534;
+            border: 1px solid #bbf7d0;
+        }
+
+        .form-message.error {
+            background-color: #fef2f2;
+            color: #dc2626;
+            border: 1px solid #fecaca;
+        }
+
+        /* Loading screen */
+        #loading-screen {
+            transition: opacity 0.5s ease-in-out;
+        }
+
+        #loading-screen.hidden {
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        /* Responsive design improvements */
+        @media (max-width: 767px) {
+            .container {
+                padding-left: 1rem;
+                padding-right: 1rem;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+                line-height: 1.1;
+            }
+
+            .hero .btn {
+                width: 100%;
+                justify-content: center;
+            }
+        }
+    </style>
 </body>
-  
-  
-  
 </html>
-
-
